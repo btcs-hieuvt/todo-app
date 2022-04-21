@@ -107,7 +107,7 @@ function App() {
   
  useEffect(()=>{
   const completedAll = todolist.every(todo => todo.isCompleted === true)
-    console.log(todolist)
+   
     const audio = document.getElementById('Audio')
   
     
@@ -121,7 +121,8 @@ function App() {
  useEffect(()=>{
   const completedAll = todolist.every(todo => todo.isCompleted === true)
         const done = document.getElementById('done')
-        if(completedAll){
+        if(completedAll && todolist.length !== 0){
+          
             done.style.display='block'
 
         }else{
