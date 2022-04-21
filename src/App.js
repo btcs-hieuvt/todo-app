@@ -9,9 +9,15 @@ import audioMeme from './assets/audio/meme.mp3'
 function App() {
   // const storageTodoList = JSON.parse(localStorage.getItem('TodoList'))
 
+  const storageTodoList = JSON.parse(localStorage.getItem('TodoList'))
   const [todolist ,setTodolist] =useState(()=>{
-    const storageTodoList = JSON.parse(localStorage.getItem('TodoList'))
-    return storageTodoList
+    if(storageTodoList != null){
+
+      return storageTodoList
+    }
+    else{
+      return []
+    }
   } )
   const [idTodoEdit ,setIdTodoEdit] = useState('')
   const [statusBtn ,setStatusBtn] = useState('All')
