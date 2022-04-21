@@ -98,8 +98,10 @@ function App() {
    saveLocalStorage(clearTodo)
  }
  // hoan thanh todo app 
-  const completedAll = todolist.every(todo => todo.isCompleted === true)
+  
  useEffect(()=>{
+  const completedAll = todolist.every(todo => todo.isCompleted === true)
+    console.log(todolist)
     const audio = document.getElementById('Audio')
   
     
@@ -108,9 +110,10 @@ function App() {
     }
 
     
- },[todolist,completedAll])
+ },[todolist])
 
  useEffect(()=>{
+  const completedAll = todolist.every(todo => todo.isCompleted === true)
         const done = document.getElementById('done')
         if(completedAll){
             done.style.display='block'
@@ -118,7 +121,7 @@ function App() {
         }else{
           done.style.display='none'
         }
- },[todolist,completedAll])
+ },[todolist])
 
   return (
     <div className='w-[100vw] h-[100vh] bg-[#f5f5f5]'>
