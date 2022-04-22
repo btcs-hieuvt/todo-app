@@ -4,7 +4,7 @@ import { AiOutlineDown } from 'react-icons/ai'
 function Header(props) {
 
     const [text, setText] = useState('')
-    const { addTodo, todolist} = props
+    const { addTodo, todolist,checkAllTodo,} = props
 
     function onAddTodo(e) {
         // console.log(e.key)
@@ -46,8 +46,10 @@ function Header(props) {
                         :
                  
                             <AiOutlineDown
+                                onClick={checkAllTodo}
+                                id='toggleAll'
                                  className={`absolute bottom-[20px] left-[10px] text-[22px]
-                                            text-[#c6c6c66b]    
+                                          cursor-pointer text-[#ddd] transition-all
                                  `}
                             />
                 }

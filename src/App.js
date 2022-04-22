@@ -80,6 +80,35 @@ function App() {
     saveLocalStorage(completedTodo)
    
   } 
+
+  function checkAllTodo(){
+    const TodoLeft =filterByStatus(todolist,'Active').length
+    const checkAllTodo =  [...todolist].map(todo => {
+          if(TodoLeft > 0){
+              // console.log(todo);
+                todo.isCompleted =true
+          }else{
+            todo.isCompleted =false
+          }
+
+          return todo
+        })
+        setTodolist(checkAllTodo)
+        saveLocalStorage(checkAllTodo)
+
+  }
+  useEffect(()=>{
+    const TodoLeft =filterByStatus(todolist,'Active').length
+    const toggleAll =document.getElementById('toggleAll')
+    // console.log(toggleAll);
+    if(TodoLeft === 0){
+        toggleAll.classList.remove('text-[#ddd]')
+          toggleAll.classList.add('text-[#000]')
+    }else{
+      toggleAll.classList.remove('text-[#000]')
+      toggleAll.classList.add('text-[#ddd]')
+    }
+  },[todolist])
  
 
   // filter button (All ,Active ,completed)
@@ -137,7 +166,8 @@ function App() {
         <Header 
           addTodo ={addTodo} 
           todolist={todolist}
-        
+          checkAllTodo={checkAllTodo}
+          numOfTodoLeft={filterByStatus(todolist,'Active').length}
          />
         <TodoLists 
           todolist ={filterByStatus(todolist,statusBtn)} 
